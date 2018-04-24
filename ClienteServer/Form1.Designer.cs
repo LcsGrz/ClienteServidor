@@ -52,7 +52,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(320, 66);
             this.button1.TabIndex = 1;
-            this.button1.Text = "ENVIAR";
+            this.button1.Text = "ENVIAR DESNUDOS";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // textBox2
