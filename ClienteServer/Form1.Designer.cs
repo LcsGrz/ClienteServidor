@@ -36,11 +36,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.tbIP = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbRecibido
             // 
-            this.tbRecibido.Location = new System.Drawing.Point(12, 12);
+            this.tbRecibido.Location = new System.Drawing.Point(12, 26);
             this.tbRecibido.Multiline = true;
             this.tbRecibido.Name = "tbRecibido";
             this.tbRecibido.Size = new System.Drawing.Size(320, 117);
@@ -95,17 +96,27 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 169);
+            this.label2.Location = new System.Drawing.Point(135, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 13);
+            this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 6;
-            this.label2.Text = "IP";
+            this.label2.Text = "Texto recibido";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 169);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(17, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "IP";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(344, 392);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbIP);
             this.Controls.Add(this.button2);
@@ -130,6 +141,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox tbIP;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 
