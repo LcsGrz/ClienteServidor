@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -22,7 +23,7 @@ namespace ClienteServer
             servidor = new server() { f = this };
             cliente = new cliente() { f = this };
             lblIPMIA.Text = GetLocalIPAddress();
-            // servidor.StartListening();
+            new Thread(() => { servidor.StartListening(); }).Start();
             // cliente.StartClient();
         }
         public static string GetLocalIPAddress()
@@ -39,12 +40,18 @@ namespace ClienteServer
         }
         public void Escribir(string texto) {
             tbRecibido.Clear();
-            tbRecibido.Text = texto;
-               
+            tbRecibido.Text = texto;    
+        }
+        public string Enviar()
+        {
+            return tbEnviarDato.Text; 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            cliente.amiguito = IPAddress.Parse(tbIP.Text);
+            new Thread(() => { cliente.StartClient(); }).Start();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -17,6 +17,7 @@ namespace ClienteServer
         private ManualResetEvent sendDone = new ManualResetEvent(false);
         private ManualResetEvent receiveDone = new ManualResetEvent(false);
 
+        public IPAddress amiguito;
         // The response from the remote device.  
         private String response = String.Empty;
 
@@ -28,12 +29,10 @@ namespace ClienteServer
                 // Establish the remote endpoint for the socket.  
                 // The name of the   
                 // remote device is "host.contoso.com".  
-                IPHostEntry ipHostInfo = Dns.GetHostEntry(Form1.GetLocalIPAddress());
-                IPAddress ipAddress = ipHostInfo.AddressList[1];
-                IPEndPoint remoteEP = new IPEndPoint(ipAddress, port);
+                IPEndPoint remoteEP = new IPEndPoint(amiguito, port);
 
                 // Create a TCP/IP socket.  
-                Socket client = new Socket(ipAddress.AddressFamily,
+                Socket client = new Socket(amiguito.AddressFamily,
                     SocketType.Stream, ProtocolType.Tcp);
 
                 // Connect to the remote endpoint.  
@@ -42,7 +41,7 @@ namespace ClienteServer
                 connectDone.WaitOne();
 
                 // Send test data to the remote device.  
-                Send(client, "This is a test<EOF>");
+                Send(client, f.Enviar());
                 sendDone.WaitOne();
 
                 // Receive the response from the remote device.  

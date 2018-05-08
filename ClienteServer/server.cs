@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace ClienteServer
 {
@@ -21,8 +22,9 @@ namespace ClienteServer
             // Establish the local endpoint for the socket.  
             // The DNS name of the computer  
             // running the listener is Dns.GetHostName().  
-            IPHostEntry ipHostInfo = Dns.GetHostEntry(Form1.GetLocalIPAddress());
-            IPAddress ipAddress = ipHostInfo.AddressList[1];
+            /* MessageBox.Show(Form1.GetLocalIPAddress());
+             IPHostEntry ipHostInfo = Dns.GetHostEntry("localhost");*/
+            IPAddress ipAddress = IPAddress.Parse(Form1.GetLocalIPAddress());
             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);
 
             // Create a TCP/IP socket.  
@@ -56,8 +58,6 @@ namespace ClienteServer
                 Console.WriteLine(e.ToString());
             }
 
-            Console.WriteLine("\nPress ENTER to continue...");
-            Console.Read();
 
         }
 
@@ -102,8 +102,9 @@ namespace ClienteServer
                 {
                     // All the data has been read from the   
                     // client. Display it on the console.  
-                    Console.WriteLine("Read {0} bytes from socket. \n Data : {1}",
-                        content.Length, content);
+                    /*Console.WriteLine("Read {0} bytes from socket. \n Data : {1}",
+                        content.Length, content);*/
+                    f.Escribir(content);
                     // Echo the data back to the client.  
                     Send(handler, content);
                 }
@@ -148,3 +149,4 @@ namespace ClienteServer
         }
     }
 }
+

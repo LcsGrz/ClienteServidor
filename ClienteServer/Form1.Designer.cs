@@ -30,7 +30,7 @@
         {
             this.tbRecibido = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbEnviarDato = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.lblRuta = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -59,13 +59,13 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox2
+            // tbEnviarDato
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 192);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(320, 55);
-            this.textBox2.TabIndex = 2;
+            this.tbEnviarDato.Location = new System.Drawing.Point(12, 192);
+            this.tbEnviarDato.Multiline = true;
+            this.tbEnviarDato.Name = "tbEnviarDato";
+            this.tbEnviarDato.Size = new System.Drawing.Size(320, 55);
+            this.tbEnviarDato.TabIndex = 2;
             // 
             // openFileDialog1
             // 
@@ -136,7 +136,7 @@
             this.Controls.Add(this.tbIP);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.lblRuta);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbEnviarDato);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tbRecibido);
             this.Name = "Form1";
@@ -150,7 +150,7 @@
 
         private System.Windows.Forms.TextBox tbRecibido;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbEnviarDato;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label lblRuta;
         private System.Windows.Forms.Button button2;
