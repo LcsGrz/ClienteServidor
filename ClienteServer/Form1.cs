@@ -21,6 +21,7 @@ namespace ClienteServer
             InitializeComponent();
             servidor = new server() { f = this };
             cliente = new cliente() { f = this };
+            lblIPMIA.Text = GetLocalIPAddress();
             // servidor.StartListening();
             // cliente.StartClient();
         }
@@ -44,7 +45,14 @@ namespace ClienteServer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(GetLocalIPAddress());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK && openFileDialog1.OpenFile() != null)
+            {
+                lblRuta.Text = openFileDialog1.FileName;
+            }
         }
     }
 }
