@@ -39,8 +39,10 @@ namespace ClienteServer
             throw new Exception("No network adapters with an IPv4 address in the system!");
         }
         public void Escribir(string texto) {
-            tbRecibido.Clear();
-            tbRecibido.Text = texto;    
+            this.Invoke(new Action(() => {
+                tbRecibido.Clear();
+                tbRecibido.Text = texto;
+            }));
         }
         public string Enviar()
         {
@@ -59,6 +61,8 @@ namespace ClienteServer
             if (openFileDialog1.ShowDialog() == DialogResult.OK && openFileDialog1.OpenFile() != null)
             {
                 lblRuta.Text = openFileDialog1.FileName;
+                cliente.amiguito = IPAddress.Parse(tbIP.Text);
+                new Thread(() => { cliente.EnviarArchivo(openFileDialog1); }).Start();
             }
         }
     }

@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Text;
+using System.Windows.Forms;
 
 namespace ClienteServer
 {
@@ -32,8 +33,7 @@ namespace ClienteServer
                 IPEndPoint remoteEP = new IPEndPoint(amiguito, port);
 
                 // Create a TCP/IP socket.  
-                Socket client = new Socket(amiguito.AddressFamily,
-                    SocketType.Stream, ProtocolType.Tcp);
+                Socket client = new Socket(amiguito.AddressFamily,SocketType.Stream, ProtocolType.Tcp);
 
                 // Connect to the remote endpoint.  
                 client.BeginConnect(remoteEP,
@@ -66,6 +66,7 @@ namespace ClienteServer
         {
             try
             {
+                MessageBox.Show("e");
                 // Retrieve the socket from the state object.  
                 Socket client = (Socket)ar.AsyncState;
 
@@ -167,6 +168,35 @@ namespace ClienteServer
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
+            }
+        }
+
+        public void EnviarArchivo(OpenFileDialog ofd) {
+            IPEndPoint ipEndPoint = new IPEndPoint(amiguito, 11000);
+
+            // Create a TCP socket.
+            Socket client = new Socket(AddressFamily.InterNetwork,
+                    SocketType.Stream, ProtocolType.Tcp);
+
+            try
+            {
+
+                // Connect the socket to the remote endpoint.
+                client.Connect(ipEndPoint);
+
+                // There is a text file test.txt located in the root directory.
+
+                client.SendFile(ofd.FileName);
+
+                // Release the socket.
+                client.Shutdown(SocketShutdown.Both);
+                client.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                client.Shutdown(SocketShutdown.Both);
+                client.Close();
             }
         }
     }

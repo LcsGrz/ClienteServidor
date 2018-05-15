@@ -96,6 +96,7 @@
             this.tbIP.Name = "tbIP";
             this.tbIP.Size = new System.Drawing.Size(293, 20);
             this.tbIP.TabIndex = 5;
+            this.tbIP.Text = "10.62.221.91";
             // 
             // label2
             // 
